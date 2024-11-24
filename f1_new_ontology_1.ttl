@@ -1,0 +1,77 @@
+@prefix f1: <http://example.org/f1#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+f1:Constructor a rdfs:Class .
+
+f1:Driver a rdfs:Class .
+
+f1:LapTime a rdfs:Class .
+
+f1:PitStop a rdfs:Class .
+
+f1:Race a rdfs:Class .
+
+f1:Result a rdfs:Class .
+
+f1:Season a rdfs:Class .
+
+f1:competes_in a rdf:Property ;
+    rdfs:domain f1:Constructor ;
+    rdfs:range f1:Race .
+
+f1:drives_for a rdf:Property ;
+    rdfs:domain f1:Driver ;
+    rdfs:range f1:Constructor .
+
+f1:duration a rdf:Property ;
+    rdfs:domain f1:PitStop ;
+    rdfs:range xsd:decimal .
+
+f1:has_laptime a rdf:Property ;
+    rdfs:domain f1:Driver ;
+    rdfs:range f1:LapTime .
+
+f1:has_pitstop a rdf:Property ;
+    rdfs:domain f1:Driver ;
+    rdfs:range f1:PitStop .
+
+f1:has_result a rdf:Property ;
+    rdfs:domain f1:Driver ;
+    rdfs:range f1:Result .
+
+f1:has_season a rdf:Property ;
+    rdfs:domain f1:Driver ;
+    rdfs:range f1:Season .
+
+f1:milliseconds a rdf:Property ;
+    rdfs:domain f1:PitStop ;
+    rdfs:range xsd:int .
+
+f1:name a rdf:Property ;
+    rdfs:domain f1:Race ;
+    rdfs:range xsd:string .
+
+f1:participates_in a rdf:Property ;
+    rdfs:domain f1:Driver ;
+    rdfs:range f1:Race .
+
+f1:points a rdf:Property ;
+    rdfs:domain f1:Constructor,
+        f1:Driver ;
+    rdfs:range xsd:int .
+
+f1:position a rdf:Property ;
+    rdfs:domain f1:Driver ;
+    rdfs:range xsd:int .
+
+f1:time a rdf:Property ;
+    rdfs:domain f1:PitStop ;
+    rdfs:range xsd:string .
+
+f1:wins a rdf:Property ;
+    rdfs:domain f1:Constructor,
+        f1:Driver ;
+    rdfs:range xsd:int .
+
