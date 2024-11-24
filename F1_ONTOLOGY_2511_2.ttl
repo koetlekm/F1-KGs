@@ -49,8 +49,9 @@
           rdfs:range xsd:int .
 
 ###  http://onto.neo4j.com/f1#Season
-:Season rdf:type owl:Class .
-
+:year rdf:type owl:DatatypeProperty ;
+            rdfs:domain :Season ;
+            rdfs:range xsd:int .
 #################################################################
 #    Object Properties (Relationships)
 #################################################################
