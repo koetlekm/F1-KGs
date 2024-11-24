@@ -1,0 +1,120 @@
+@prefix : <http://onto.neo4j.com/f1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://onto.neo4j.com/f1#> .
+
+<http://onto.neo4j.com/f1#> rdf:type owl:Ontology .
+
+#################################################################
+#    Classes (Entities)
+#################################################################
+
+###  http://onto.neo4j.com/f1#Driver
+:Driver rdf:type owl:Class .
+
+###  http://onto.neo4j.com/f1#Constructor
+:Constructor rdf:type owl:Class .
+
+###  http://onto.neo4j.com/f1#Race
+:Race rdf:type owl:Class .
+
+###  http://onto.neo4j.com/f1#PitStop
+:PitStop rdf:type owl:Class .
+
+###  http://onto.neo4j.com/f1#LapTime
+:LapTime rdf:type owl:Class .
+
+###  http://onto.neo4j.com/f1#Result
+:Result rdf:type owl:Class .
+
+###  http://onto.neo4j.com/f1#Season
+:Season rdf:type owl:Class .
+
+#################################################################
+#    Object Properties (Relationships)
+#################################################################
+
+###  http://onto.neo4j.com/f1#participates_in
+:participates_in rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Driver ;
+                 rdfs:range :Race .
+
+###  http://onto.neo4j.com/f1#competes_in
+:competes_in rdf:type owl:ObjectProperty ;
+             rdfs:domain :Constructor ;
+             rdfs:range :Race .
+
+###  http://onto.neo4j.com/f1#drives_for
+:drives_for rdf:type owl:ObjectProperty ;
+            rdfs:domain :Driver ;
+            rdfs:range :Constructor .
+
+###  http://onto.neo4j.com/f1#has_pitstop
+:has_pitstop rdf:type owl:ObjectProperty ;
+             rdfs:domain :Driver ;
+             rdfs:range :PitStop .
+
+###  http://onto.neo4j.com/f1#has_laptime
+:has_laptime rdf:type owl:ObjectProperty ;
+             rdfs:domain :Driver ;
+             rdfs:range :LapTime .
+
+###  http://onto.neo4j.com/f1#has_result
+:has_result rdf:type owl:ObjectProperty ;
+            rdfs:domain :Driver ;
+            rdfs:range :Result .
+
+###  http://onto.neo4j.com/f1#has_season
+:has_season rdf:type owl:ObjectProperty ;
+            rdfs:domain :Driver ;
+            rdfs:range :Season .
+
+#################################################################
+#    Data Properties (Attributes)
+#################################################################
+
+###  http://onto.neo4j.com/f1#points
+:points rdf:type owl:DatatypeProperty ;
+        rdfs:domain :Driver ;
+        rdfs:range xsd:int .
+
+###  http://onto.neo4j.com/f1#wins
+:wins rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Driver ;
+      rdfs:range xsd:int .
+
+###  http://onto.neo4j.com/f1#position
+:position rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Driver ;
+          rdfs:range xsd:int .
+
+###  http://onto.neo4j.com/f1#name
+:name rdf:type owl:DatatypeProperty ;
+      rdfs:domain :Race ;
+      rdfs:range xsd:string .
+
+###  http://onto.neo4j.com/f1#duration
+:duration rdf:type owl:DatatypeProperty ;
+          rdfs:domain :PitStop ;
+          rdfs:range xsd:decimal .
+
+###  http://onto.neo4j.com/f1#time
+:time rdf:type owl:DatatypeProperty ;
+      rdfs:domain :PitStop ;
+      rdfs:range xsd:string .
+
+###  http://onto.neo4j.com/f1#milliseconds
+:milliseconds rdf:type owl:DatatypeProperty ;
+              rdfs:domain :PitStop ;
+              rdfs:range xsd:int .
+
+###  http://onto.neo4j.com/f1#timestamp
+:timestamp rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Event ;
+           rdfs:range xsd:string .
+
+
+
