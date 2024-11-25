@@ -1,0 +1,140 @@
+{
+  "@context": "http://schema.org",
+  "@type": "Dataset",
+  "name": "OpenFlights Dataset",
+  "description": "This dataset contains information about airports, routes, operations, cancellations, and locations derived from OpenFlights. It includes details such as flight routes, airport operations, and cancellations, which can be useful for machine learning applications in airline operations analysis.",
+  "identifier": "OpenFlights-CSV",
+  "license": "CC BY 4.0",
+  "url": "https://www.openflights.org/data.html",
+  "author": {
+    "@type": "Organization",
+    "name": "OpenFlights",
+    "url": "https://www.openflights.org"
+  },
+  "keywords": ["airports", "flights", "routes", "operations", "cancellations", "machine learning", "aviation"],
+  "dataset": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "CSV",
+      "contentUrl": "path_to_file/routes.csv",
+      "name": "Routes Data",
+      "description": "This file contains data on flight routes between airports, including origin and destination details, passenger counts, and flight distances."
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "CSV",
+      "contentUrl": "path_to_file/airport_operations.csv",
+      "name": "Airport Operations Data",
+      "description": "This file includes various airport operational metrics, such as on-time departures, delays, and taxi times."
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "CSV",
+      "contentUrl": "path_to_file/airport_locations.csv",
+      "name": "Airport Locations Data",
+      "description": "This file contains airport location details, such as airport name, type, and geographical coordinates."
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "CSV",
+      "contentUrl": "path_to_file/airport_cancellations.csv",
+      "name": "Airport Cancellations Data",
+      "description": "This file includes data on cancellations and diversions at airports, such as the number of departure and arrival cancellations and diversions."
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "CSV",
+      "contentUrl": "path_to_file/airports.csv",
+      "name": "Airports Data",
+      "description": "This file contains basic information on airports, such as city, IATA/ICAO codes, and the role of the airport."
+    }
+  ],
+  "structure": [
+    {
+      "@type": "DatasetStructure",
+      "name": "Routes",
+      "columns": [
+        {"name": "Origin_airport", "type": "string", "description": "IATA code of the origin airport"},
+        {"name": "Destination_airport", "type": "string", "description": "IATA code of the destination airport"},
+        {"name": "Origin_city", "type": "string", "description": "City of the origin airport"},
+        {"name": "Destination_city", "type": "string", "description": "City of the destination airport"},
+        {"name": "Passengers", "type": "integer", "description": "Number of passengers for this route"},
+        {"name": "Seats", "type": "integer", "description": "Number of seats available for this route"},
+        {"name": "Flights", "type": "integer", "description": "Number of flights for this route"},
+        {"name": "Distance", "type": "integer", "description": "Distance in miles between origin and destination airports"},
+        {"name": "Fly_date", "type": "date", "description": "Date of the flight"},
+        {"name": "Origin_population", "type": "integer", "description": "Population of the origin city"},
+        {"name": "Destination_population", "type": "integer", "description": "Population of the destination city"},
+        {"name": "Org_airport_lat", "type": "float", "description": "Latitude of the origin airport"},
+        {"name": "Org_airport_long", "type": "float", "description": "Longitude of the origin airport"},
+        {"name": "Dest_airport_lat", "type": "float", "description": "Latitude of the destination airport"},
+        {"name": "Dest_airport_long", "type": "float", "description": "Longitude of the destination airport"}
+      ]
+    },
+    {
+      "@type": "DatasetStructure",
+      "name": "Airport Operations",
+      "columns": [
+        {"name": "airport", "type": "string", "description": "IATA code of the airport"},
+        {"name": "year", "type": "integer", "description": "Year of the operational data"},
+        {"name": "departures for metric computation", "type": "integer", "description": "Total departures for metric computation"},
+        {"name": "arrivals for metric computation", "type": "integer", "description": "Total arrivals for metric computation"},
+        {"name": "percent on-time gate departures", "type": "float", "description": "Percentage of on-time gate departures"},
+        {"name": "percent on-time airport departures", "type": "float", "description": "Percentage of on-time airport departures"},
+        {"name": "percent on-time gate arrivals", "type": "float", "description": "Percentage of on-time gate arrivals"},
+        {"name": "average_gate_departure_delay", "type": "float", "description": "Average gate departure delay"},
+        {"name": "average_taxi_out_time", "type": "float", "description": "Average taxi-out time"},
+        {"name": "average taxi out delay", "type": "float", "description": "Average taxi-out delay"},
+        {"name": "average airport departure delay", "type": "float", "description": "Average airport departure delay"},
+        {"name": "average airborne delay", "type": "float", "description": "Average airborne delay"},
+        {"name": "average taxi in delay", "type": "float", "description": "Average taxi-in delay"},
+        {"name": "average block delay", "type": "float", "description": "Average block delay"},
+        {"name": "average gate arrival delay", "type": "float", "description": "Average gate arrival delay"}
+      ]
+    },
+    {
+      "@type": "DatasetStructure",
+      "name": "Airport Locations",
+      "columns": [
+        {"name": "Key", "type": "string", "description": "Unique identifier for the airport"},
+        {"name": "LocID", "type": "string", "description": "Location ID"},
+        {"name": "AP_NAME", "type": "string", "description": "Airport name"},
+        {"name": "ALIAS", "type": "string", "description": "Alias of the airport"},
+        {"name": "Facility Type", "type": "string", "description": "Type of facility at the airport"},
+        {"name": "FAA REGION", "type": "string", "description": "FAA region of the airport"},
+        {"name": "COUNTY", "type": "string", "description": "County where the airport is located"},
+        {"name": "CITY", "type": "string", "description": "City where the airport is located"},
+        {"name": "STATE", "type": "string", "description": "State where the airport is located"},
+        {"name": "AP Type", "type": "string", "description": "Type of airport (e.g., international, regional)"},
+        {"name": "Latitude", "type": "float", "description": "Latitude of the airport"},
+        {"name": "Longitude", "type": "float", "description": "Longitude of the airport"},
+        {"name": "Boundary Data Available", "type": "boolean", "description": "Indicates if boundary data is available for the airport"}
+      ]
+    },
+    {
+      "@type": "DatasetStructure",
+      "name": "Airport Cancellations",
+      "columns": [
+        {"name": "Airport", "type": "string", "description": "IATA code of the airport"},
+        {"name": "Year", "type": "integer", "description": "Year of the cancellations data"},
+        {"name": "Departure Cancellations", "type": "integer", "description": "Number of departure cancellations"},
+        {"name": "Arrival Cancellations", "type": "integer", "description": "Number of arrival cancellations"},
+        {"name": "Departure Diversions", "type": "integer", "description": "Number of departure diversions"},
+        {"name": "Arrival Diversions", "type": "integer", "description": "Number of arrival diversions"}
+      ]
+    },
+    {
+      "@type": "DatasetStructure",
+      "name": "Airports",
+      "columns": [
+        {"name": "City", "type": "string", "description": "City of the airport"},
+        {"name": "FAA", "type": "string", "description": "FAA code of the airport"},
+        {"name": "IATA", "type": "string", "description": "IATA code of the airport"},
+        {"name": "ICAO", "type": "string", "description": "ICAO code of the airport"},
+        {"name": "Airport", "type": "string", "description": "Name of the airport"},
+        {"name": "Role", "type": "string", "description": "Role of the airport (e.g., commercial, military)"},
+        {"name": "Enplanements", "type": "integer", "description": "Number of passengers enplaned at the airport"}
+      ]
+    }
+  ]
+}
