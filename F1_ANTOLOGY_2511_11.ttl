@@ -1,0 +1,118 @@
+@prefix : <http://onto.neo4j.com/f1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://onto.neo4j.com/f1#> .
+
+<http://onto.neo4j.com/f1#> rdf:type owl:Ontology .
+
+
+#################################################################
+#    Classes (Entities)
+#################################################################
+
+:Driver rdf:type owl:Class .
+:Constructor rdf:type owl:Class .
+:Race rdf:type owl:Class .
+:Circuit rdf:type owl:Class .
+:Season rdf:type owl:Class .
+:PitStop rdf:type owl:Class .
+:Lap rdf:type owl:Class .
+:RacePerformance rdf:type owl:Class .
+
+#################################################################
+#    Object Properties (Relationships)
+#################################################################
+
+# Driver to Constructor Relationship
+:drives_for rdf:type owl:ObjectProperty ;
+            rdfs:domain :Driver ;
+            rdfs:range :Constructor .
+
+# Driver to Race Relationship (participates in races)
+:participates_in rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Driver ;
+                 rdfs:range :Race .
+
+# Constructor to Race Relationship (competes in races)
+:competes_in rdf:type owl:ObjectProperty ;
+            rdfs:domain :Constructor ;
+            rdfs:range :Race .
+
+# Race Performance in Race (for both Driver and Constructor)
+:has_performance_in rdf:type owl:ObjectProperty ;
+            rdfs:domain :Driver ;
+            rdfs:range :RacePerformance .
+
+:has_driver_performance rdf:type owl:ObjectProperty ;
+            rdfs:domain :Race ;
+            rdfs:range :Driver .
+
+:has_constructor_performance rdf:type owl:ObjectProperty ;
+            rdfs:domain :Race ;
+            rdfs:range :Constructor .
+
+# Linking Race to Circuit and Season
+:has_circuit rdf:type owl:ObjectProperty ;
+             rdfs:domain :Race ;
+             rdfs:range :Circuit .
+
+:belongs_to_season rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Race ;
+                  rdfs:range :Season .
+
+# PitStop to Driver Relationship
+:has_pitstop rdf:type owl:ObjectProperty ;
+             rdfs:domain :Driver ;
+             rdfs:range :PitStop .
+
+# Lap to Driver Relationship
+:has_lap rdf:type owl:ObjectProperty ;
+        rdfs:domain :Driver ;
+        rdfs:range :Lap .
+
+# New relationship for Fastest Lap
+:has_fastest_lap rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Driver ;
+                 rdfs:range :Lap .
+
+#################################################################
+#    Data Properties (Attributes)
+#################################################################
+
+# Race-level attributes for Driver Performance in a specific race
+:wins_at_race rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Driver ;
+              rdfs:range xsd:int .
+
+:points_at_race rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Driver ;
+                rdfs:range xsd:int .
+
+### Pit Stop and Lap Time attributes
+:pits_stop_time rdf:type owl:DatatypeProperty ;
+                rdfs:domain :PitStop ;
+                rdfs:range xsd:decimal .
+
+:lap_time rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Lap ;
+          rdfs:range xsd:decimal .
+
+:fastest_lap_time rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Lap ;
+                  rdfs:range xsd:decimal .
+
+### Race-specific attributes for Race Performance (Driver and Constructor)
+:grid_position rdf:type owl:DatatypeProperty ;
+               rdfs:domain :RacePerformance ;
+               rdfs:range xsd:int .
+
+:race_position rdf:type owl:DatatypeProperty ;
+               rdfs:domain :RacePerformance ;
+               rdfs:range xsd:int .
+
+:constructor_points_at_race rdf:type owl:DatatypeProperty ;
+                            rdfs:domain :RacePerformance ;
+                            rdfs:range xsd:int .
